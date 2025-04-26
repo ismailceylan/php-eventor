@@ -13,8 +13,9 @@ interface ShouldDispatchEvents
 	 * @param string $event
 	 * @param callable $listener
 	 * @param integer $priority
+	 * @return self
 	 */
-    public function on( string $event, callable $listener, int $priority = 0 ): void;
+    public function on( string $event, callable $listener, int $priority = 0 ): self;
 
 	/**
 	 * Registers an event listener once.
@@ -22,16 +23,18 @@ interface ShouldDispatchEvents
 	 * @param string $event
 	 * @param callable $listener
 	 * @param integer $priority
+	 * @return self
 	 */
-    public function once( string $event, callable $listener, int $priority = 0 ): void;
+    public function once( string $event, callable $listener, int $priority = 0 ): self;
 
 	/**
 	 * Unregisters an event listener.
 	 *
 	 * @param string $event
 	 * @param callable $listener
+	 * @return self
 	 */
-    public function off( string $event, callable $listener ): void;
+    public function off( string $event, callable $listener ): self;
 
 	/**
 	 * Triggers an event.

@@ -20,8 +20,9 @@ trait HasEvents
      * @param string $event
      * @param callable $listener
      * @param int $priority
+     * @return self
      */
-    public function on( string $event, callable $listener, int $priority = 0 )
+    public function on( string $event, callable $listener, int $priority = 0 ): self
     {
         $this->listeners[ $event ][] =
 		[
@@ -29,6 +30,8 @@ trait HasEvents
             'priority' => $priority,
             'once' => false,
         ];
+
+        return $this;
     }
 
     /**
@@ -37,8 +40,9 @@ trait HasEvents
      * @param string $event
      * @param callable $listener
      * @param int $priority
+     * @return self
      */
-    public function once( string $event, callable $listener, int $priority = 0 )
+    public function once( string $event, callable $listener, int $priority = 0 ): self
     {
         $this->listeners[ $event ][] =
 		[
@@ -46,6 +50,8 @@ trait HasEvents
             'priority' => $priority,
             'once' => true,
         ];
+
+        return $this;
     }
 
     /**
@@ -53,12 +59,13 @@ trait HasEvents
      *
      * @param string $event
      * @param callable $listener
+     * @return self
      */
-    public function off( string $event, callable $listener )
+    public function off( string $event, callable $listener ): self
     {
         if( empty( $this->listeners[ $event ]))
 		{
-            return;
+            return $this;
         }
 
         $this->listeners[ $event ] = array_filter(
@@ -70,6 +77,8 @@ trait HasEvents
 		{
             unset( $this->listeners[ $event ]);
         }
+
+        return $this;
     }
 
     /**
@@ -79,7 +88,7 @@ trait HasEvents
      * @param mixed $payload
      * @return array
      */
-    public function trigger( string $event, mixed $payload = null )
+    public function trigger( string $event, mixed $payload = null ): array
     {
         if( empty( $this->listeners[ $event ]))
 		{
