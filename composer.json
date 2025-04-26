@@ -1,0 +1,21 @@
+{
+	"name": "iceylan/eventor",
+	"description": "Simple event emitter and dispatcher for PHP",
+	"type": "library",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+		"Iceylan\\Eventor\\": "src/"
+		}
+	},
+	"authors": [
+        {
+            "name": "Ismail Ceylan",
+            "email": "ismaillceylan@gmail.com"
+        }
+    ],
+    "require": {
+		"php": ">=8.1",
+        "larapack/dd": "^1.1"
+    }
+}
