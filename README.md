@@ -65,7 +65,7 @@ class Order
     use HasEvents {
         on as public addHook;
         off as public removeHook;
-		trigger as public runHook;
+        trigger as public runHook;
     }
 }
 
